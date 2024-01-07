@@ -52,7 +52,7 @@ const Navbar = (props) => {
                             </li>
 
                         </ul>
-                        <i className="fa-solid fa-moon btn" onClick={handleChangeModeClick}></i>
+                        <i className="fa-solid fa-moon " onClick={handleChangeModeClick}></i>
                     </div>
                 </div>
             </nav></>
