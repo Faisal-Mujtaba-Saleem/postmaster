@@ -14,8 +14,8 @@ code {
 
 .mb-min3\% {
   margin-bottom: -3%;
+  background-color: transparent;
 }
-
 .code-container {
   position: relative;
 }

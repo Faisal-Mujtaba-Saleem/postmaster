@@ -5,6 +5,8 @@ import { FetchContext } from '../contexts/FetchContext/FetchContext';
 
 const Form = (props) => {
     // Contexts 
+
+    // FetchContexts 
     const { URL, setURL } = useContext(FetchContext);
     const { requestType, setRequestType } = useContext(FetchContext);
 
@@ -66,13 +68,13 @@ const Form = (props) => {
                     <legend className="col-form-label col-sm-2 pt-0">Request-Type</legend>
                     <div className="col-sm-10">
                         <div className="form-check">
-                            <input className="form-check-input" style={props.buttonStyles} type="radio" name="requestType" id="requestType1" value="GET" checked={requestType === 'GET'} onChange={handleReqTypeChange} />
+                            <input className="form-check-input" type="radio" name="requestType" id="requestType1" value="GET" checked={requestType === 'GET'} onChange={handleReqTypeChange} />
                             <label className="form-check-label" htmlFor="requestType1">
                                 GET
                             </label>
                         </div>
                         <div className="form-check">
-                            <input className="form-check-input" style={props.buttonStyles} type="radio" name="requestType" id="requestType2" value="POST" onChange={handleReqTypeChange} />
+                            <input className="form-check-input" type="radio" name="requestType" id="requestType2" value="POST" onChange={handleReqTypeChange} />
                             <label className="form-check-label" htmlFor="requestType2">
                                 POST
                             </label>
@@ -85,14 +87,14 @@ const Form = (props) => {
                         <legend className="col-form-label col-sm-2 pt-0">Query-Format</legend>
                         <div className="col-sm-10">
                             <div className="form-check">
-                                <input className="form-check-input" style={props.buttonStyles} type="radio" name="QueryFormat" id="QueryFormat1" value="string"
+                                <input className="form-check-input" type="radio" name="QueryFormat" id="QueryFormat1" value="string"
                                     checked={queryFormat === `string`} onChange={handleQueryFormatChange} />
                                 <label className="form-check-label" htmlFor="QueryFormat1">
                                     Raw Query String
                                 </label>
                             </div>
                             <div className="form-check">
-                                <input className="form-check-input" style={props.buttonStyles} type="radio" name="QueryFormat" id="QueryFormat2" value="Custom Query Params"
+                                <input className="form-check-input" type="radio" name="QueryFormat" id="QueryFormat2" value="Custom Query Params"
                                     onChange={handleQueryFormatChange} />
                                 <label className="form-check-label" htmlFor="QueryFormat2">
                                     Custom Query Parameters
@@ -109,13 +111,13 @@ const Form = (props) => {
                     </div>
 
                     <div className="row g-3 my-4 mb-5" hidden={requestType !== 'GET' || queryFormat !== `Custom Query Params`}>
-                        <div className="input-group mb-3" style={{
+                        <div className="input-group mb-3 bg-transparent " style={{
                             width: `85%`,
                             margin: `auto`
                         }}>
-                            <input type="text" className="form-control border-0 text-center mb-min3%" placeholder="Key" aria-label="Key" />
+                            <input type="text" className="form-control border-0 text-center mb-min3%" placeholder="Key" aria-label="Key" readOnly />
                             <span className="input-group-text visually-hidden mb-min3%">@</span>
-                            <input type="text" className="form-control border-0 text-center mb-min3%" placeholder="Value" aria-label="Value" />
+                            <input type="text" className="form-control border-0 text-center mb-min3%" placeholder="Value" aria-label="Value" style={{ color: "wheat" }} readOnly />
                         </div>
                         {
                             Array.isArray(queryParams) && queryParams.map((queryParameter, index) => {
@@ -134,13 +136,13 @@ const Form = (props) => {
                         <legend className="col-form-label col-sm-2 pt-0">Content-Type</legend>
                         <div className="col-sm-10">
                             <div className="form-check">
-                                <input className="form-check-input" style={props.buttonStyles} type="radio" name="contentType" id="contentType1" value="text/plain" checked={contentType === `text/plain`} onChange={handleContentTypeChange} />
+                                <input className="form-check-input" type="radio" name="contentType" id="contentType1" value="text/plain" checked={contentType === `text/plain`} onChange={handleContentTypeChange} />
                                 <label className="form-check-label" htmlFor="contentType1">
                                     Text
                                 </label>
                             </div>
                             <div className="form-check">
-                                <input className="form-check-input" style={props.buttonStyles} type="radio" name="contentType" id="contentType2" value="application/json" onChange={handleContentTypeChange} />
+                                <input className="form-check-input" type="radio" name="contentType" id="contentType2" value="application/json" onChange={handleContentTypeChange} />
                                 <label className="form-check-label" htmlFor="contentType2">
                                     JSON
                                 </label>
@@ -152,14 +154,14 @@ const Form = (props) => {
                         <legend className="col-form-label col-sm-2 pt-0">JSON-Format</legend>
                         <div className="col-sm-10">
                             <div className="form-check">
-                                <input className="form-check-input" style={props.buttonStyles} type="radio" name="JSON_Format" id="JSON_Format1" value="string"
+                                <input className="form-check-input" type="radio" name="JSON_Format" id="JSON_Format1" value="string"
                                     checked={JSON_Format === `string`} onChange={handleJSON_FormatChange} />
                                 <label className="form-check-label" htmlFor="JSON_Format1">
                                     Raw JSON String
                                 </label>
                             </div>
                             <div className="form-check">
-                                <input className="form-check-input" style={props.buttonStyles} type="radio" name="JSON_Format" id="JSON_Format2" value="Custom JSON Params"
+                                <input className="form-check-input" type="radio" name="JSON_Format" id="JSON_Format2" value="Custom JSON Params"
                                     onChange={handleJSON_FormatChange} />
                                 <label className="form-check-label" htmlFor="JSON_Format2">
                                     Custom JSON Parameters
@@ -185,9 +187,9 @@ const Form = (props) => {
                             width: `85%`,
                             margin: `auto`
                         }}>
-                            <input type="text" className="form-control border-0 text-center mb-min3%" placeholder="Key" aria-label="Key" />
+                            <input className="form-control border-0 text-center mb-min3%" placeholder="Key" aria-label="Key" readOnly />
                             <span className="input-group-text visually-hidden mb-min3%">@</span>
-                            <input type="text" className="form-control border-0 text-center mb-min3%" placeholder="Value" aria-label="Value" />
+                            <input className="form-control border-0 text-center mb-min3%" placeholder="Value" aria-label="Value" readOnly />
                         </div>
                         {
                             Array.isArray(JSON_Params) && JSON_Params.map((JSON_Parameter, index) => {
@@ -200,7 +202,7 @@ const Form = (props) => {
                         }
                     </div>
                 </div>
-                <button type="button" className="btn btn-primary mt-4" style={props.buttonStyles} onClick={handleSendRequest}>Send Request</button>
+                <button type="button" className="btn btn-primary mt-4" onClick={handleSendRequest}>Send Request</button>
             </form >
         </ >
     )
